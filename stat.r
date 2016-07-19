@@ -28,9 +28,24 @@ switch(cmd,
     y <- as.integer(unlist(strsplit(args[4],',')))
     switch(method,
       linear={
-        # linear regression
+        # simple linear regression
         fit <- lm(y~x)
+      },
+      quadratic={
+        # quadratic regression
+        x2 <- x^2
+        fit <- lm(y~x2+x)
+      },
+      cubic={
+        x2 <- x^2
+        x3 <- x^3
+        fit <- lm(y~x3+x2+x)
+      },
+      log={
+        logx <- log(x)
+        fit <- lm(y~logx)
       }
+
     )
     summary <- summary(fit)
     cat('{')
