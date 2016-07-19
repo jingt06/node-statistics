@@ -23,21 +23,60 @@ stat.mean = (array, cb) => {
 	//   median: ...,
 	//   min: ...,
 	//   max: ...,
+	// 	 sum: ...,
+    //   variance: ...,
+    //   stdDev: ...,
 	//   quantile: { '0':..., '25':..., '50':..., '75': ..., '100':... } }
 	option = "mean";
+
+	// error check
 	if (!checkArrayAreNumeric(array)){
-		console.log('error')
 		return cb(new Error('First argument must be an array of numeric value'));
 	}
+
+	// build command
 	cmdString = command + ' ' + option + ' ' + array.join(',');
 	exec(cmdString, (error, stdout, stderr) => {
 	  if (error) {
 	    return cb(error);
-	    return;
 	  }
 	  result = JSON.parse(stdout);
 	  return cb(null, result);
 	});
 }
 
+stat.regression = (method, xArr, yArr, cb) => {
+	option = 'regression';
+	// first argument is string represent regression method
+	supportedMethods = ['linear', 'quadratic', 'cubic', 'log'];
+	// second argument an array of X value
+	// third argument is an array of Y value
+	// forth argument is a callback function
+	// returns:
 
+	//error check
+	if (!checkArrayAreNumeric(xArr)){
+		return cb(new Error('First argument must be an array of numeric value'));
+	}
+	if (!checkArrayAreNumeric(yArr)){
+		return cb(new Error('First argument must be an array of numeric value'));
+	}
+	if (xArr.length != yArr.length){
+		return cb(new Error('Two array are not equal length'));
+	}
+	if (supportedMethods.indexOf(method) == -1) {
+		return cb(new Error('Method ' + method + ' is not one of supported methods'));
+	}
+
+	// build command
+	cmdString = command +' ' + option + ' ' + method + ' ' +
+	xArr.join(',') + ' ' + yArr.join(',')
+	exec(cmdString, (error, stdout, stderr) => {
+	  if (error) {
+	    return cb(error);
+	  }
+	  result = JSON.parse(stdout);
+	  cb(null, stdout)
+	});
+
+}
