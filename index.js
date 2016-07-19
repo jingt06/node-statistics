@@ -54,7 +54,9 @@ stat.regression = (method, xArr, yArr, cb) => {
 	// forth argument is a callback function
 	// returns:
 	//	{
-	//   "residuals": [...] ,
+	//   "residuals": [...],
+	//   "p-value": ...,
+	//   "sigma": ...,
 	//   "coefficients": {
 	//   	... : { "Estimate": ...
 	//              "StdErr"  : ...
@@ -87,5 +89,4 @@ stat.regression = (method, xArr, yArr, cb) => {
 	  result = JSON.parse(stdout);
 	  cb(null, stdout)
 	});
-
 }

@@ -36,6 +36,10 @@ switch(cmd,
     cat('{')
     res <- summary$residuals
     cat(paste('"residuals":', '[', paste(res, collapse = ','), ']', ','))
+    cat(paste('"sigma":', summary$sigma, ','))
+    f <- summary$fstatistic
+    p <- pf(f[1],f[2],f[3],lower.tail=F)
+    cat(paste('"p-value":', p, ','))
     cat('"coefficients":{')
       coe <- summary$coefficients
       length <- length(coe)
