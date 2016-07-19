@@ -53,6 +53,15 @@ stat.regression = (method, xArr, yArr, cb) => {
 	// third argument is an array of Y value
 	// forth argument is a callback function
 	// returns:
+	//	{
+	//   "residuals": [...] ,
+	//   "coefficients": {
+	//   	... : { "Estimate": ...
+	//              "StdErr"  : ...
+	//              "t-value" : ...
+	//              "PrGtT"   : ... }
+    //     }
+    //  }
 
 	//error check
 	if (!checkArrayAreNumeric(xArr)){
