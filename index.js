@@ -11,7 +11,7 @@ function checkArrayAreNumeric(array) {
 	array.reduce((prev, curr) => prev && isNumeric(curr))
 }
 
-command = 'Rscript stat.r'
+command = 'Rscript node_modules/node-statistics/stat.r' // not a good way, will fix later
 
 module.exports = stat = {};
 
