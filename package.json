@@ -1,6 +1,6 @@
 {
   "name": "node-statistics",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/jingt06/node-statistics/issues"
   },
-  "homepage": "https://github.com/jingt06/node-statistics#readme"
+  "homepage": "https://github.com/jingt06/node-statistics#readme",
+  "keywords": [
+    "linear",
+    "math",
+    "statistics"
+    "stat"
+    "probability",
+    "regression",
+    "mean",
+  ]
 }
